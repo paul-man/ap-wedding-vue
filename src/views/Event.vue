@@ -1,18 +1,18 @@
 <template>
-  <div class="home">
+  <div class="event">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <GoogleMapFrame/>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import GoogleMapFrame from '@/components/GoogleMapFrame.vue'
 
 export default {
-  name: 'home',
+  name: 'event',
   components: {
-    HelloWorld
+    GoogleMapFrame
   }
 }
 </script>

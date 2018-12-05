@@ -1,15 +1,45 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Welcome from './views/Welcome.vue'
+import Event from './views/Event.vue'
+import Rsvp from './views/Rsvp.vue'
+import Accomodations from './views/Accomodations.vue'
+import Photos from './views/Photos.vue'
+import PageNotFound from './views/PageNotFound.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      redirect: '/welcome',
+    },
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: Welcome
+    },
+    {
+      path: '/event',
+      name: 'event',
+      component: Event
+    },
+    {
+      path: '/rsvp',
+      name: 'rsvp',
+      component: Rsvp
+    },
+    {
+      path: '/accomodations',
+      name: 'accomodations',
+      component: Accomodations
+    },
+    {
+      path: '/photos',
+      name: 'photos',
+      component: Photos
     },
     {
       path: '/about',
@@ -18,6 +48,10 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    },
+    { 
+      path: "*", 
+      component: PageNotFound 
     }
   ]
 })
