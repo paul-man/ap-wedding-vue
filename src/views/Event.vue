@@ -1,6 +1,5 @@
 <template>
-  <div class="event">
-    <img alt="Vue logo" src="../assets/logo.png">
+  <div id="event">
     <GoogleMapFrame/>
   </div>
 </template>
