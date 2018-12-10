@@ -29,6 +29,7 @@ export default {
 
   .navbar {
     background-color: $ap-purple;
+    position: relative;
   }
   .fixed-top {
   }
