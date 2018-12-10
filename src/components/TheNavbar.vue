@@ -24,7 +24,6 @@ export default {
 </script>
 
 <style  lang="scss" scoped>
-
   $navlink-color: #DE877B;  
   $nav-bg-color: #957AA5;
 
@@ -32,13 +31,8 @@ export default {
     background-color: $ap-purple;
   }
   .fixed-top {
-    position: relative;
   }
   
-  #nav .navbar-header {
-    float: left;
-  }
-
   #nav a {
     color: $navlink-color;
     text-decoration: none;

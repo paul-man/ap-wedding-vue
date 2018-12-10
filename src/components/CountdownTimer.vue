@@ -1,5 +1,4 @@
-// replace with more customizable countdown timer or build own
-// npm uninstall vuejs-countdown --save
+
 <template>
   <div id="countdown">
     <div class="container">
