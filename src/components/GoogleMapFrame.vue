@@ -2,8 +2,8 @@
   <div class="googlemapframe">
     <div class="mapouter">
       <div class="gmap_canvas">
-        <iframe width="700" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=the%20royalton%20mansion&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-        <a href="https://www.pureblack.de">pureblack.de</a>
+        <iframe width="700" height="500" id="gmap_canvas" :src="map_url" 
+          frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
       </div>
     </div>
   </div>
@@ -11,7 +11,10 @@
 
 <script>
 export default {
-  name: 'GoogleMapFrame'
+  name: 'GoogleMapFrame',
+  props: {
+      map_url: String 
+    }
 }
 </script>
 
@@ -21,6 +24,7 @@ export default {
     text-align:right;
     height:500px;
     width:700px;
+    margin: auto !important;
   }
   .gmap_canvas {
     overflow:hidden;
