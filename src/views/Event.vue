@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="container map-container">
-      <GoogleMapFrame map_url="https://maps.google.com/maps?q=the%20royalton%20mansion&t=&z=15&ie=UTF8&iwloc=&output=embed"/>      
+      <GoogleMapFrame map_url="https://maps.google.com/maps?q=the%20royalton%20mansion&t=&z=15&ie=UTF8&iwloc=&output=embed" map_name="venue_map"/>      
     </div>
   </div>
 </template>

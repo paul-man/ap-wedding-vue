@@ -7,7 +7,7 @@
       <p>Please see below for Vianna location and directions</p><br/>
     </div>
     <div class="container">
-      <GoogleMapFrame map_url="https://maps.google.com/maps?q=viana%20hotel&t=&z=13&ie=UTF8&iwloc=&output=embed"/>
+      <GoogleMapFrame map_url="https://maps.google.com/maps?q=viana%20hotel&t=&z=13&ie=UTF8&iwloc=&output=embed" map_name="hotel_map"/>
     </div>
   </div>
 </template>
