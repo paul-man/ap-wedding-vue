@@ -9,6 +9,7 @@
         <router-link to="/rsvp">RSVP</router-link>
         <router-link to="/accomodations">Accomodations</router-link>
         <router-link to="/photos">Photos</router-link>
+        <router-link to="/music">Music</router-link>
       </div>
     </nav>
   </div>
@@ -30,8 +31,6 @@ export default {
   .navbar {
     background-color: $ap-purple;
     position: relative;
-  }
-  .fixed-top {
   }
   
   #nav a {

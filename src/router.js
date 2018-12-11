@@ -5,6 +5,7 @@ import Event from './views/Event.vue'
 import Rsvp from './views/Rsvp.vue'
 import Accomodations from './views/Accomodations.vue'
 import Photos from './views/Photos.vue'
+import Music from './views/Music.vue'
 import PageNotFound from './views/PageNotFound.vue'
 
 Vue.use(Router)
@@ -40,6 +41,11 @@ export default new Router({
       path: '/photos',
       name: 'photos',
       component: Photos
+    },
+    {
+      path: '/music',
+      name: 'music',
+      component: Music
     },
     {
       path: '/about',
