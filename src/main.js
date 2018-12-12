@@ -4,11 +4,16 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import vmodal from 'vue-js-modal'
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 Vue.config.productionTip = false
+Vue.use(vmodal, {
+  dialog: true,
+  dynamic: true,
+})
 
 Vue.use(VueAxios, axios)
 

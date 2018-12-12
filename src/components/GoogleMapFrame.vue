@@ -25,7 +25,8 @@ export default {
         parent.document.getElementById('maps_loading_div').classList.remove('loading')
       }
       // Maybe use this for a CSS loading icon
-      
+      // Maybe take the favicon, and fade in the rings 1 in, 1 out, over and over
+
       // let iframe = document.getElementById(this.map_name);
       // let iframe_rect = iframe.getBoundingClientRect();
       // let loading_elm = document.getElementById('loading-wrapper');
@@ -57,22 +58,5 @@ export default {
     height:500px;
     width:700px;
     border: 1px solid black;
-  }
- 
-  .loading-wrapper {
-    position: relative;
-  }
-  .loading:before {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 100;
-    background: rgba($ap-off-white, 0.3) center center no-repeat url('~@/assets/loading.gif');
   }
 </style>
