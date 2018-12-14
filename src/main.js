@@ -5,16 +5,18 @@ import store from './store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import vmodal from 'vue-js-modal'
+import * as uiv from 'uiv'
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 Vue.config.productionTip = false
+
 Vue.use(vmodal, {
   dialog: true,
-  dynamic: true,
+  dynamic: true
 })
-
+Vue.use(uiv, {prefix: 'uiv'})
 Vue.use(VueAxios, axios)
 
 Vue.filter('two_digits', function (value) {
