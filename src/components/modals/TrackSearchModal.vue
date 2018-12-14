@@ -8,30 +8,20 @@
     </div>
 
     <div class="container">
-      <label for="input-5">Users of Github:</label>
-    <input id="input-5" class="form-control" type="text" placeholder="Type to search...">
-    <uiv-typeahead v-model="model" target="#input-5" :async-function="queryFunction" bind:data="tracks">
-      <template slot="item" slot-scope="props">
-        <li v-for="(item) in props.items" :key="item.id">
-          <p>test</p>
-          <a role="button" @click="props.select(item)">
-            <img width="22px" height="22px" :src="item.album.images[0] + '&s=40'">
-            <span v-html="props.highlight(item)">{{ item.name }}</span>
-          </a>
-        </li>
-      </template>
-    </uiv-typeahead>
-    <br/>
-    <uiv-alert v-show="model">You selected {{model}}</uiv-alert>
-      <!-- <label for="input-4">Tracks:</label>
-      <input id="input-4" class="form-control" type="text" placeholder="Type to search...">
-      <typeahead v-model="model" target="#input-4" async-src="localhost:8081/api/track/" async-key="items" item-key="login"/>
+      <label for="track-search">Songs on Spotify:</label>
+      <input id="track-search" class="form-control" type="text" placeholder="Type to search...">      
+      <uiv-typeahead v-model="model" target="#track-search" :async-function="trackSearch" item-key="name" append-to-body>
+        <template slot="item" slot-scope="props">
+          <li v-for="(item) in props.items" v-bind:key="item.id">
+            <a role="button" @click="props.select(item);getTrack(item.id);">
+              <img width="22px" height="22px" :src="item.album.images[0].url">
+              <span v-html="props.highlight(item)"></span>
+            </a>
+          </li>
+        </template>
+      </uiv-typeahead>
+      <div id="selected-track-div"></div>
       <br/>
-      <alert v-show="model">You selected {{model}}</alert> -->
-      <!-- <input v-model="track_search" placeholder="Track name">
-      <div>
-        <button v-on:click="searchTrack">Search song</button>
-      </div> -->
     </div>
   </div>
 </template>
@@ -45,34 +35,33 @@ export default {
   },
   data () {
     return {
-      tracks: [],
       model: ''
     }
   },
   methods: {
-     queryFunction (query, done) {
-        axios.get("api/track/" + query)
+    trackSearch (track_title, done) {
+      axios.get("api/track/" + track_title)
+      .then(res => {
+        done(res.data.tracks.items)
+      })
+      .catch(err => {
+        // any error handler
+        alert('Oops, there was an error retrieving the songs!\nCall/text Paul and tell at him.')
+      })
+    },
+    github (query, done) {
+        axios.get('https://api.github.com/search/users?q=' + query)
           .then(res => {
-            // alert(res.data.total_count)
-            this.tracks = res.data.tracks
-            done(res.data.tracks.items)
+            done(res.data.items)
           })
           .catch(err => {
             // any error handler
+            alert(err)
           })
       },
-     trackSearch: function () {
-      // `this` inside methods points to the Vue instance
-      // alert('track name ' + this.track_search)
-      axios.get("api/track/" + this.track_search)
-      .then((response)  =>  {
-        this.track_count = response.data.tracks.total
-        this.api_response = 'good'
-        this.first_track_name = response.data.tracks.items[0].name
-        alert(this.track_count + ',' + this.api_response + '.' + this.first_track_name)
-      }, (error)  =>  {
-        this.track_search = 'oh shit' + error
-      }) 
+    getTrack: function(track_id) {
+      var song_div = document.getElementById('selected-track-div')
+      song_div.innerHTML = '<iframe src="https://open.spotify.com/embed/track/'+track_id+'" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
     }
   }
 }
@@ -99,5 +88,11 @@ export default {
 .modal-header {
   padding: 10px;
   height: 50px;
+}
+
+.dropdown-menu {
+  max-height: 100px;
+  background-color: gray;
+  overflow-y: auto;
 }
 </style>
