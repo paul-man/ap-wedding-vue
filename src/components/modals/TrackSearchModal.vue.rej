@@ -1,0 +1,53 @@
+diff a/src/components/modals/TrackSearchModal.vue b/src/components/modals/TrackSearchModal.vue	(rejected hunks)
+@@ -45,34 +35,33 @@
+   },
+   data () {
+     return {
+-      tracks: [],
+       model: ''
+     }
+   },
+   methods: {
+-     queryFunction (query, done) {
+-        axios.get("api/track/" + query)
++    trackSearch (track_title, done) {
++      axios.get("api/track/" + track_title)
++      .then(res => {
++        done(res.data.tracks.items)
++      })
++      .catch(err => {
++        // any error handler
++        alert('Oops, there was an error retrieving the songs!\nCall/text Paul and tell at him.')
++      })
++    },
++    github (query, done) {
++        axios.get('https://api.github.com/search/users?q=' + query)
+           .then(res => {
+-            // alert(res.data.total_count)
+-            this.tracks = res.data.tracks
+-            done(res.data.tracks.items)
++            done(res.data.items)
+           })
+           .catch(err => {
+             // any error handler
++            alert(err)
+           })
+       },
+-     trackSearch: function () {
+-      // `this` inside methods points to the Vue instance
+-      // alert('track name ' + this.track_search)
+-      axios.get("api/track/" + this.track_search)
+-      .then((response)  =>  {
+-        this.track_count = response.data.tracks.total
+-        this.api_response = 'good'
+-        this.first_track_name = response.data.tracks.items[0].name
+-        alert(this.track_count + ',' + this.api_response + '.' + this.first_track_name)
+-      }, (error)  =>  {
+-        this.track_search = 'oh shit' + error
+-      }) 
++    getTrack: function(track_id) {
++      var song_div = document.getElementById('selected-track-div')
++      song_div.innerHTML = '<iframe src="https://open.spotify.com/embed/track/'+track_id+'" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+     }
+   }
+ }

@@ -8,14 +8,26 @@
     </div>
 
     <div class="container">
-      <label for="track-search">Songs on Spotify:</label>
-      <input id="track-search" class="form-control" type="text" placeholder="Type to search...">      
-      <uiv-typeahead v-model="model" target="#track-search" :async-function="trackSearch" item-key="name" append-to-body>
+      <label for="input-track-search">Songs on Spotify:</label>
+      <input id="input-track-search" class="form-control" type="text" placeholder="Type to search...">      
+      <uiv-typeahead v-model="model" target="#input-track-search" :async-function="trackSearch" item-key="name" append-to-body>
         <template slot="item" slot-scope="props">
-          <li v-for="(item) in props.items" v-bind:key="item.id">
+          <li v-for="item in props.items" v-bind:key="item.id">
             <a role="button" @click="props.select(item);getTrack(item.id);">
-              <img width="22px" height="22px" :src="item.album.images[0].url">
-              <span v-html="props.highlight(item)"></span>
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5" style="background-color:red;">
+                    <img width="50px" height="50px" :src="item.album.images[0].url">
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-3 col-xs-2" style="padding:0px">
+                    <div class="short-div" style="background-color:green">
+                      <span v-html="props.highlight(item)"></span></div>
+                    <div class="short-div" style="background-color:purple">
+                      <span class="artist-name">{{ item.artists[0].name }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </a>
           </li>
         </template>
@@ -46,7 +58,7 @@ export default {
       })
       .catch(err => {
         // any error handler
-        alert('Oops, there was an error retrieving the songs!\nCall/text Paul and tell at him.')
+        alert('Oops, there was an error retrieving the songs!\nCall/text Paul and tell at him.\n'+err)
       })
     },
     github (query, done) {
@@ -91,8 +103,16 @@ export default {
 }
 
 .dropdown-menu {
-  max-height: 100px;
+  max-height: 200px;
   background-color: gray;
   overflow-y: auto;
+}
+
+.dropdown-menu li {
+  height: 50px;
+}
+
+.artist-name{
+  color: gray;
 }
 </style>

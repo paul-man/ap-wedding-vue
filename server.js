@@ -19,14 +19,16 @@ app.get('/api/track/:track', function (req, res) {
   // Access userId via: req.params.userId
   // Access bookId via: req.params.bookId
   
-
+  console.log('Searching for: ' + req.params.track);
   // Do search using the access token
   spotifyApi.searchTracks('track:'+req.params.track).then(
     function(data) {
       res.send(data.body);
     },
     function(err) {
-      console.log('Something went wrong!', err);
+      console.log('Something went wrong! Trying to get new access token.', err);
+      spotifyApi.clientCredentialsGrant();
+      res.send(spotifyApi.searchTracks('track:'+req.params.track));
     }
   );
   // res.send(data.body);
