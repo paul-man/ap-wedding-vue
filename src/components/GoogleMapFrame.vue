@@ -2,7 +2,7 @@
   <div class="googlemapframe">
       <div class="mapouter">
         <div class="loading-wrapper loading" id="maps_loading_div">
-        <div class="gmap_canvas">
+        <div class="container-fluid gmap_canvas">
           <iframe width="700" height="500" :id="map_name" :src="map_url" 
             frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
         </div>
@@ -59,4 +59,6 @@ export default {
     width:700px;
     border: 1px solid black;
   }
+  
+// @media (max-width:1025px) { .container-fluid { width: 33% !important;} }
 </style>

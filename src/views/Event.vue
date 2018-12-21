@@ -1,6 +1,6 @@
 <template>
   <div class="event">
-    <div class="container" id="event-schedule">
+    <div class="container-fluid" id="event-schedule">
       <div class="row header-row">
         <div class="col">
           Time
@@ -75,9 +75,6 @@ export default {
   padding-top: 20px;
 }
 
-#event-schedule {
-  width: 33%;
-}
 .time {
   color: $ap-red;
   font-weight: bolder;
@@ -93,4 +90,6 @@ export default {
 .map-container {
   padding-top: 20px;
 }
+@media (min-width:1025px) { .container-fluid { width: 33% !important;} }
+// @media (min-width:1025px) { .container-fluid { width: 33% !important;} }
 </style>
