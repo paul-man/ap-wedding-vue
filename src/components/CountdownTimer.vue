@@ -26,7 +26,7 @@
       },1000);
     },
     props: {
-      date: Number 
+      date: String
     },
     data() {
         return {

@@ -15,10 +15,6 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/welcome',
-    },
-    {
-      path: '/welcome',
       name: 'welcome',
       component: Welcome
     },

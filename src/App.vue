@@ -23,6 +23,8 @@ export default {
 <style lang="scss">
   // @import '@/scss/base.scss';
   @import '@/scss/settings.scss';
+  html { overflow-x:auto; overflow-y:scroll; }
+
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

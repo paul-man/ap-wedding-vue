@@ -70,7 +70,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+  // @import '@/scss/settings.scss';
 .event {
   padding-top: 20px;
 }
