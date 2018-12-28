@@ -22,7 +22,7 @@
 </template>
 
 <script>
-
+import nprogress from 'nprogress'
 export default {
   name: 'TheNavbar',
   data () {
@@ -33,11 +33,18 @@ export default {
   components: {
   },
   mounted() {
-    var element= document.getElementsByClassName('nav-item');
+    this.routeWatcher = this.$watch(
+    function () {  return this.$route },
+    function(route) {
+      this.view_title = route.name
+      nprogress.done()
+      }
+    )    
+    var element= document.getElementsByClassName('nav-item')
     for(var i=0; i<element.length; i++) {
       element[i].addEventListener('click', function() {
-        if (screen.width < 768) {
-          setTimeout(document.getElementsByClassName('navbar-toggler')[0].click(), 750)
+        if (window.innerWidth < 768) {
+          setTimeout(document.getElementsByClassName('navbar-toggler')[0].click(), 500)
         }
       }, false);   
     }
@@ -75,7 +82,7 @@ export default {
   }
 
   #brand-img {
-    height:45px;
+    height:45px !important;
   }
 
   @media (max-width: 1200px) {
@@ -96,6 +103,8 @@ export default {
     transform: translate(-50%, -50%);
     font-size: 5vw;
     border-bottom: solid 1px $navlink-color;
+    text-decoration: none;
+    pointer-events: none;
   }
 
   @media (min-width: 768px) {
