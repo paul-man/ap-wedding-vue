@@ -20,7 +20,7 @@ export default {
 
 <style>
   #header {
-    padding-top: 20px;
+    padding: 90px;
     /* margin-top: 20px; */
     /* background-image: url('~@/assets/hero.png');
     background-repeat: no-repeat;

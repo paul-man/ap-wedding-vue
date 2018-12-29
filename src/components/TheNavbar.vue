@@ -34,35 +34,32 @@ export default {
   },
   mounted() {
     this.routeWatcher = this.$watch(
-    function () {  return this.$route },
-    function(route) {
-      this.view_title = route.name
-      nprogress.done()
+      function () {  return this.$route },
+      function(route) {
+        this.view_title = route.name
+        nprogress.done()
       }
-    )    
+    )
     var element= document.getElementsByClassName('nav-item')
     for(var i=0; i<element.length; i++) {
       element[i].addEventListener('click', function() {
         if (window.innerWidth < 768) {
           setTimeout(document.getElementsByClassName('navbar-toggler')[0].click(), 500)
         }
-      }, false);   
+      }, false);
     }
   }
 }
 </script>
 
 <style  lang="scss">
-  $navlink-color: #DE877B;  
+  $navlink-color: #DE877B;
   $nav-bg-color: #957AA5;
-  .fixed-top {
-    position: relative !important;
-  }
   .navbar {
-    background-color: $ap-purple;
-    position: relative;
+    // background-color: $ap-purple;
+    // position: relative;
   }
-  
+
   #nav a {
     color: $navlink-color;
     text-decoration: none;
@@ -89,10 +86,10 @@ export default {
     .navbar{
       position: fixed;
       right: 0;
-      left: 0;   
+      left: 0;
       border-radius: 0;
       top: 0;
-    }      
+    }
   }
 
   #view-title {
