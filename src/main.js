@@ -9,8 +9,7 @@ import * as uiv from 'uiv'
 import VueFire from 'vuefire'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
-
-
+// import { firestorePlugin } from 'vuefire'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -23,6 +22,7 @@ Vue.use(vmodal, {
 Vue.use(uiv, {prefix: 'uiv'})
 Vue.use(VueAxios, axios)
 Vue.use(VueFire)
+// Vue.use(firestorePlugin)
 
 firebase.initializeApp({
   apiKey: "AIzaSyBfDW-L_wa3qfWn6-EFsizhwo2v_HXCTDE",
@@ -32,6 +32,9 @@ firebase.initializeApp({
   storageBucket: "wedding-vue-94a4d.appspot.com",
   messagingSenderId: "278306639818"
 })
+const settings = {timestampsInSnapshots: true}
+firebase.firestore().settings(settings)
+
 
 export const db = firebase.firestore()
 
